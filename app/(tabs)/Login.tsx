@@ -25,7 +25,7 @@ export default function Login({ navigation }: { navigation: LoginScreenNavigatio
         <EntradaTexto
           label="Senha"
           placeholder="Insira sua senha"
-          secureTextEntry={true}  // Adicione para campo de senha
+          secureTextEntry={true}  // adiciona para campo de senha
         />
       </Box>
       <Botao onPress={() => navigation.navigate('Tabs')}>Entrar</Botao>

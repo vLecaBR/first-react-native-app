@@ -10,7 +10,6 @@ const Tab = createNativeStackNavigator();
 
 export default function Rotas() {
   return (
-    <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen 
           name="Login" 
@@ -28,6 +27,5 @@ export default function Rotas() {
           options={{ headerShown: false }}
         />
       </Tab.Navigator> 
-    </NavigationContainer>
   );
 }
