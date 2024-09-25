@@ -10,7 +10,6 @@ import Tabs from "../Tabs";
 
 export default function Rotas(){
   return(
-    <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen 
           name="Login" component={Login} options={{ headerShown: false }}
@@ -22,6 +21,5 @@ export default function Rotas(){
           name="Tabs" component={Tabs} options={{ headerShown: false }}
         />
       </Tab.Navigator>
-    </NavigationContainer>
   )
 }

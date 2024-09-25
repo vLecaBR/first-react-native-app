@@ -1,8 +1,8 @@
 import { VStack, Text, Image, Box, ScrollView, Divider } from "native-base"
-import Logo from "@/src/assets/logo.png"
-import { Botao } from "@/src/components/Botao";
-import { EntradaTexto } from "@/src/components/EntradaTexto";
-import { Titulo } from "@/src/components/Titulo";
+import Logo from "../src/assets/Logo.png"
+import { Botao } from "../src/components/Botao";
+import { EntradaTexto } from "../src/components/EntradaTexto";
+import { Titulo } from "../src/components/Titulo";
 import { depoimentos } from "../utils/mock";
 
 export default function Principal(){
