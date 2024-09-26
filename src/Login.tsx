@@ -1,9 +1,9 @@
 import { VStack, Image, Text, Box, Link } from 'native-base';
 import { TouchableOpacity } from 'react-native';
 import Logo from '../../src/assets/Logo.png';
-import { Botao } from '../../src/components/Botao';
-import { EntradaTexto } from '../../src/components/EntradaTexto';
-import { Titulo } from '../../src/components/Titulo';
+import { Botao } from './components/Botao';
+import { EntradaTexto } from './components/EntradaTexto';
+import { Titulo } from './components/Titulo';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 
