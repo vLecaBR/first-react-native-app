@@ -1,5 +1,6 @@
 import { VStack, Text, Image, Box, ScrollView, Divider } from "native-base"
 import Logo from "../../src/assets/Logo.png"
+import { NativeBaseProvider, StatusBar } from 'native-base';
 import { Botao } from "../../src/components/Botao";
 import { EntradaTexto } from "../../src/components/EntradaTexto";
 import { Titulo } from "../../src/components/Titulo";
@@ -8,6 +9,7 @@ import { depoimentos } from "../../utils/mock";
 export default function Principal(){
 
     return (
+      <NativeBaseProvider>
       <ScrollView flex={1} bgColor="white">
         <VStack flex={1} alignItems="flex-start" justifyContent="flex-start" p={5}>
           <Image source={Logo} alt="Logo" mt={10} />
@@ -40,5 +42,6 @@ export default function Principal(){
           </VStack>
         </VStack>
       </ScrollView>
+      </NativeBaseProvider>
     );
   }

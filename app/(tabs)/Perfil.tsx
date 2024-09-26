@@ -1,8 +1,10 @@
 import { VStack, Text, ScrollView, Avatar, Divider } from "native-base"
 import { Titulo } from "@/src/components/Titulo"
+import { NativeBaseProvider, StatusBar } from 'native-base';
 
 export default function Perfil(){
     return(
+      <NativeBaseProvider>
       <ScrollView flex={1}>
         <VStack flex={1} alignItems="center" p={5}>
           <Titulo color="blue.500">Meu Perfil</Titulo>
@@ -21,5 +23,6 @@ export default function Perfil(){
           <Text>Sinusite</Text>
         </VStack>
       </ScrollView>
+      </NativeBaseProvider>
     )
   }

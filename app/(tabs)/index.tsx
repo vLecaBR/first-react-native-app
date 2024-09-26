@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import { NativeBaseProvider, StatusBar } from 'native-base';
 
 import Principal from "./Principal";
 import Consultas from "./Consultas";
@@ -41,6 +42,7 @@ const tabs = [
 
 export default function Tabs() {
   return (
+    <NativeBaseProvider>
     <Tab.Navigator screenOptions={screenOptions}>
       {tabs.map((tab) => (
         <Tab.Screen
@@ -57,5 +59,6 @@ export default function Tabs() {
       ))
       }
     </Tab.Navigator>
+    </NativeBaseProvider>
   )
 }

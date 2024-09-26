@@ -2,9 +2,11 @@ import { VStack, Divider, ScrollView } from "native-base"
 import { Botao } from "@/src/components/Botao"
 import {CardConsulta} from "@/src/components/CardConsulta"
 import {Titulo} from "@/src/components/Titulo"
+import { NativeBaseProvider, StatusBar } from 'native-base';
 
 export default function Consultas(){
     return(
+      <NativeBaseProvider>
       <ScrollView p="5">
         <Titulo color="blue.500">Minhas consultas</Titulo>
         <Botao mt={5} mb={5}>Agendar nova consulta</Botao>
@@ -43,5 +45,6 @@ export default function Consultas(){
           foiAtendido
         />
       </ScrollView>
+      </NativeBaseProvider>
     )
   }

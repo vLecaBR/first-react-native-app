@@ -1,5 +1,5 @@
 import { NativeBaseProvider, StatusBar } from 'native-base';
-import { TEMAS } from './app/(tabs)/styles/temas';
+import { TEMAS } from './styles/temas';
 import Rotas from '@/src/Rotas';
 
 export default function App() {

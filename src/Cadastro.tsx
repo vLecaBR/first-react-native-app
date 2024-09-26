@@ -1,7 +1,7 @@
 import { VStack, Image, Text, Box, Link, Checkbox, ScrollView } from 'native-base'
 import { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
-import Logo from '../../src/assets/Logo.png'
+import Logo from './assets/Logo.png'
 import { Botao } from './components/Botao';
 import { EntradaTexto } from './components/EntradaTexto';
 import { Titulo } from './components/Titulo';

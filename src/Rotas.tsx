@@ -1,25 +1,33 @@
 import React from "react";
-import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Tab = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 
 import Cadastro from "./Cadastro";
 import Login from "./Login";
-import Tabs from "../app/(tabs)";
+import Principal from "../app/(tabs)/Principal";
 
-export default function Rotas(){
-  return(
-      <Tab.Navigator>
-        <Tab.Screen 
-          name="Login" component={Login} options={{ headerShown: false }}
+export default function Rotas() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{ headerShown: false }}
         />
-        <Tab.Screen 
-          name="Cadastro" component={Cadastro} options={{ headerShown: false }}
+        <Stack.Screen
+          name="Cadastro"
+          component={Cadastro}
+          options={{ headerShown: false }}
         />
-        <Tab.Screen 
-          name="Tabs" component={Tabs} options={{ headerShown: false }}
+        <Stack.Screen
+          name="Principal"
+          component={Principal}
+          options={{ headerShown: false }}
         />
-      </Tab.Navigator>
-  )
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
