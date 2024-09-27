@@ -5,10 +5,12 @@ import { Botao } from './components/Botao';
 import { EntradaTexto } from './components/EntradaTexto';
 import { Titulo } from './components/Titulo';
 import { secoes } from '../utils/CadastroEntradaTexto';
+import { cadastrarPaciente } from './serviços/PacienteServico';
 
 export default function Cadastro() {
   const [numSecao, setNumSecao] = useState(0);
   const [dados, setDados] = useState({} as any)
+  const [planos, setPlanos] = useState([] as number[])
   
 
   function avancarSecao(){
@@ -17,6 +19,8 @@ export default function Cadastro() {
     }
     else{
       console.log(dados)
+      console.log(planos)
+      cadastrar() 
     }
   }
 
@@ -28,6 +32,31 @@ export default function Cadastro() {
 
     function atualizarDados (id: string, valor:string){
       setDados({...dados, [id]:valor})
+    }
+
+    async function cadastrar() {
+      const resultado = await cadastrarPaciente({
+        cpf: dados.cpf,
+        nome: dados.nome,
+        email: dados.email,
+        endereco: {
+          cep: dados.cep,
+          rua: dados.rua,
+          numero: dados.numero,
+          estado: dados.estado,
+          complemento: dados.complemento
+        },
+        senha: dados.senha,
+        telefone: dados.telefone,
+        possuiPlanoSaude: planos.length > 0,
+        planosSaude: planos,
+        imagem: dados.imagem
+      })
+
+      if(!resultado){
+        console.log('erro ao fazer cadastro')
+      }
+      
     }
 
 
@@ -47,27 +76,43 @@ export default function Cadastro() {
             placeholder={entrada.placeholder} 
             key={entrada.id} 
             secureTextEntry = {entrada.secureTextEntry}
-            value={dados[entrada.label]}
-            onChangeText={(text) => atualizarDados(entrada.label, text)}
+            value={dados[entrada.name]}
+            onChangeText={(text) => atualizarDados(entrada.name, text)}
             />
           )
         })
       }
       </Box>
       <Box>
+        {numSecao == 2 && 
         <Text color="blue.800" fontWeight="bold" fontSize="md" mt="2" mb={2}>
           Selecione o plano:
-        </Text>
+        </Text>}
         {
           secoes[numSecao].checkbox.map(checkbox => {
-            return <Checkbox key={checkbox.id} value={checkbox.value}>
+            return (
+            <Checkbox 
+            key={checkbox.id} 
+            value={checkbox.value}
+            onChange={() =>{
+              setPlanos((planosAnteriores) =>{
+                if(planosAnteriores.includes(checkbox.id)){
+                  return planosAnteriores.filter((id) => id !== checkbox.id)
+                }
+                return [...planosAnteriores, checkbox.id]
+              })
+            }}
+            isChecked={planos.includes(checkbox.id)}
+            >
               {checkbox.value}
-            </Checkbox>
+            </Checkbox>)
           })
         }
       </Box>
       {numSecao > 0 && <Botao onPress={() => voltarSecao()} bgColor="gray.400">Voltar</Botao>}
-      <Botao onPress={() => avancarSecao()} mt={4} mb={20}>Avançar</Botao>
+      <Botao onPress={() => avancarSecao()} mt={4} mb={20}>
+        {numSecao == 2? 'Finalizar' : 'Avançar'}
+      </Botao>
     </ScrollView>
   );
 }
