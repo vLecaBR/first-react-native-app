@@ -9,7 +9,7 @@ export default function Perfil(){
         <VStack flex={1} alignItems="center" p={5}>
           <Titulo color="blue.500">Meu Perfil</Titulo>
   
-          <Avatar size="xl" source={{ uri: "https://cursos.alura.com.br/user/vlecabr.png" }} mt={5} />
+          <Avatar size="xl" source={{ uri: "https://github.com/vLecaBR.png" }} mt={5} />
   
           <Titulo color="blue.500">Informações pessoais</Titulo>
           <Titulo fontSize="lg" mb={1}>Victor Leça</Titulo>
