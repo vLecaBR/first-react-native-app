@@ -23,30 +23,30 @@ export default function Explorar(){
 
         <Titulo color="blue.500" fontSize="xl" alignSelf="center" mb={2}>Resultado da busca</Titulo>
         <CardConsulta 
-          nome='Dr. Andre'
+          nome='Dr. Leça'
           especialidade='Cardiologista'
-          foto='https://github.com/andreocunha.png'
+          foto='https://github.com/vlecabr.png'
           data='20/04/2023'
           foiAgendado
         />
         <CardConsulta 
-          nome='Dr. Andre'
+          nome='Dr. Leça'
           especialidade='Cardiologista'
-          foto='https://github.com/andreocunha.png'
+          foto='https://github.com/vlecabr.png'
           data='20/04/2023'
           foiAgendado
         />
         <CardConsulta 
-          nome='Dr. Andre'
+          nome='Dr. Leça'
           especialidade='Cardiologista'
-          foto='https://github.com/andreocunha.png'
+          foto='https://github.com/vlecabr.png'
           data='20/04/2023'
           foiAgendado
         />
         <CardConsulta 
-          nome='Dr. Andre'
+          nome='Dr. Leça'
           especialidade='Cardiologista'
-          foto='https://github.com/andreocunha.png'
+          foto='https://github.com/vlecabr.png'
           data='20/04/2023'
           foiAgendado
         />

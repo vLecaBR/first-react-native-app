@@ -13,9 +13,9 @@ export default function Consultas(){
   
         <Titulo color="blue.500" fontSize="lg" alignSelf="flex-start" mb={2}>Próximas consultas</Titulo>
         <CardConsulta 
-          nome='Dr. Andre'
+          nome='Dr. Leça'
           especialidade='Cardiologista'
-          foto='https://github.com/andreocunha.png'
+          foto='https://github.com/vlecabr.png'
           data='20/04/2023'
           foiAgendado
         />
@@ -24,23 +24,23 @@ export default function Consultas(){
   
         <Titulo color="blue.500" fontSize="lg" alignSelf="flex-start" mb={2}>Consultas passadas</Titulo>
         <CardConsulta 
-          nome='Dr. Andre'
+          nome='Dr. Leça'
           especialidade='Cardiologista'
-          foto='https://github.com/andreocunha.png'
+          foto='https://github.com/vlecabr.png'
           data='20/04/2023'
           foiAtendido
         />
         <CardConsulta 
-          nome='Dr. Andre'
+          nome='Dr. Leça'
           especialidade='Cardiologista'
-          foto='https://github.com/andreocunha.png'
+          foto='https://github.com/vlecabr.png'
           data='20/04/2023'
           foiAtendido
         />
         <CardConsulta 
-          nome='Dr. Andre'
+          nome='Dr. Leça'
           especialidade='Cardiologista'
-          foto='https://github.com/andreocunha.png'
+          foto='https://github.com/vlecabr.png'
           data='20/04/2023'
           foiAtendido
         />
