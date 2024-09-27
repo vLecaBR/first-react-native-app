@@ -28,7 +28,7 @@ const tabs = [
   {
     name: 'Cadastro',
     component: Cadastro,
-    icon: 'log-in-outline'
+    icon: 'checkmark-circle-outline'
   },
   {
     name: 'Principal',
