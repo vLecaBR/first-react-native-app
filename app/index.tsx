@@ -7,6 +7,7 @@ import Consultas from "./(tabs)/Consultas";
 import Explorar from "./(tabs)/Explorar";
 import Perfil from "./(tabs)/Perfil";
 import Login from "@/src/Login";
+import Cadastro from "@/src/Cadastro";
 
 const Tab = createBottomTabNavigator()
 
@@ -22,7 +23,12 @@ const tabs = [
   {
     name: 'Login',
     component: Login,
-    icon: 'person'
+    icon: 'log-in-outline'
+  },
+  {
+    name: 'Cadastro',
+    component: Cadastro,
+    icon: 'log-in-outline'
   },
   {
     name: 'Principal',

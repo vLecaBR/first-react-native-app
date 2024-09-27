@@ -7,6 +7,7 @@ const Stack = createNativeStackNavigator();
 import Cadastro from "./Cadastro";
 import Login from "./Login";
 import Principal from "../app/(tabs)/Principal"; 
+import Index from "../app/index"
 
 export default function Rotas() {
   return (
@@ -20,12 +21,12 @@ export default function Rotas() {
         <Stack.Screen
           name="Cadastro"
           component={Cadastro}
-          options={{ headerShown: false }}  // Esconde o header no cadastro
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Principal"
           component={Principal}
-          options={{ headerShown: false }}  // Esconde o header na tela principal
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

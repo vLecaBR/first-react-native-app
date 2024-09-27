@@ -1,12 +1,15 @@
-import { VStack, Image, Text, Box, Link } from 'native-base';
+import { VStack, Image, Text, Box, Link, useToast } from 'native-base';
 import { TouchableOpacity } from 'react-native';
 import Logo from './assets/Logo.png';
 import { Botao } from './components/Botao';
 import { EntradaTexto } from './components/EntradaTexto';
 import { Titulo } from './components/Titulo';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { fazerLogin } from './serviços/AutenticacaoServico';
+import AsyncStorage from '@react-native-async-storage/async-storage'; 
+import { jwtDecode } from 'jwt-decode';
+import Cadastro from './Cadastro';
 
 
 type LoginScreenNavigationProp = NativeStackNavigationProp<any>;
@@ -16,16 +19,46 @@ export default function Login({ navigation }: { navigation: LoginScreenNavigatio
    
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
+  const [carregando, setCarregando] = useState(true)
+  const toast = useToast()
+
+  useEffect(() => {
+    // AsyncStorage.removeItem('token') //se precisar remover o token descomentar e reiniciar a aplicação
+    async function verificarLogin() {
+      const token = await AsyncStorage.getItem
+      ('token')
+      if(token){
+        navigation.replace('(tabs)')
+
+      }
+      setCarregando(false)
+    }
+    verificarLogin()
+  },[])
  
   async function login() {
     const resultado = await fazerLogin(email, senha)
     if(resultado){
+      const {token} = resultado
+      AsyncStorage.setItem('token', token)
+      const tokenDecodificado = jwtDecode(token) as any
+      const pacienteId= tokenDecodificado.id
+      AsyncStorage.setItem('pacienteId', pacienteId)
+
       navigation.replace('(tabs)')
     }
     else{
-      console.log('erro')
+      toast.show({
+        title: "Erro no login",
+        description: "o email ou senha estão incorretos",
+        backgroundColor: "red.500"
+      })
     }
     
+  }
+
+  if(carregando){
+    return null
   }
 
   return (
@@ -45,7 +78,7 @@ export default function Login({ navigation }: { navigation: LoginScreenNavigatio
         <EntradaTexto
           label="Senha"
           placeholder="Insira sua senha"
-          secureTextEntry={true}  // adiciona para campo de senha
+          secureTextEntry={true}  // campo de senha perdendo a visibilidade com ***
           value={senha}
           onChangeText={setSenha}
         />
