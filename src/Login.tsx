@@ -5,11 +5,29 @@ import { Botao } from './components/Botao';
 import { EntradaTexto } from './components/EntradaTexto';
 import { Titulo } from './components/Titulo';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useState } from 'react';
+import { fazerLogin } from './serviços/AutenticacaoServico';
 
 
 type LoginScreenNavigationProp = NativeStackNavigationProp<any>;
 
-export default function Login({ navigation }: { navigation: LoginScreenNavigationProp }) {
+export default function Login({ navigation }: { navigation: LoginScreenNavigationProp }) 
+{
+   
+  const [email, setEmail] = useState('')
+  const [senha, setSenha] = useState('')
+ 
+  async function login() {
+    const resultado = await fazerLogin(email, senha)
+    if(resultado){
+      navigation.replace('(tabs)')
+    }
+    else{
+      console.log('erro')
+    }
+    
+  }
+
   return (
     <VStack flex={1} alignItems="center" justifyContent="center" p={5}>
       <Image source={Logo} alt="Logo Voll" />
@@ -21,14 +39,18 @@ export default function Login({ navigation }: { navigation: LoginScreenNavigatio
         <EntradaTexto
           label="Email"
           placeholder="Insira seu endereço de e-mail"
+          value={email}
+          onChangeText={setEmail}
         />
         <EntradaTexto
           label="Senha"
           placeholder="Insira sua senha"
           secureTextEntry={true}  // adiciona para campo de senha
+          value={senha}
+          onChangeText={setSenha}
         />
       </Box>
-      <Botao onPress={() => navigation.navigate('Tabs')}>Entrar</Botao>
+      <Botao onPress={login}>Entrar</Botao>
 
       <Link href='https://www.alura.com.br' mt={2}>
         Esqueceu sua senha?

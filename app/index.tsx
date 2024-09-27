@@ -6,6 +6,7 @@ import Principal from "./(tabs)/Principal";
 import Consultas from "./(tabs)/Consultas";
 import Explorar from "./(tabs)/Explorar";
 import Perfil from "./(tabs)/Perfil";
+import Login from "@/src/Login";
 
 const Tab = createBottomTabNavigator()
 
@@ -18,6 +19,11 @@ const screenOptions = {
 }
 
 const tabs = [
+  {
+    name: 'Login',
+    component: Login,
+    icon: 'person'
+  },
   {
     name: 'Principal',
     component: Principal,
