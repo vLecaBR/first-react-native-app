@@ -7,7 +7,7 @@ const Stack = createNativeStackNavigator();
 import Cadastro from "./Cadastro";
 import Login from "./Login";
 import Principal from "../app/(tabs)/Principal"; 
-import Index from "../app/index"
+import Agendamento from "./Agendamento";
 
 export default function Rotas() {
   return (
@@ -26,6 +26,11 @@ export default function Rotas() {
         <Stack.Screen
           name="Principal"
           component={Principal}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Agendamento"
+          component={Agendamento}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
