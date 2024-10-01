@@ -8,57 +8,51 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useEffect, useState } from 'react';
 import { fazerLogin } from './serviços/AutenticacaoServico';
 import AsyncStorage from '@react-native-async-storage/async-storage'; 
-import { jwtDecode } from 'jwt-decode';
-import Cadastro from './Cadastro';
-
+import {jwtDecode} from 'jwt-decode'; // Importação corrigida
+import Principal from '@/app/(tabs)/Principal';
 
 type LoginScreenNavigationProp = NativeStackNavigationProp<any>;
 
 export default function Login({ navigation }: { navigation: LoginScreenNavigationProp }) 
 {
-   
-  const [email, setEmail] = useState('')
-  const [senha, setSenha] = useState('')
-  const [carregando, setCarregando] = useState(true)
-  const toast = useToast()
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [carregando, setCarregando] = useState(true);
+  const toast = useToast();
 
   useEffect(() => {
-    // AsyncStorage.removeItem('token') //se precisar remover o token descomentar e reiniciar a aplicação
     async function verificarLogin() {
-      const token = await AsyncStorage.getItem
-      ('token')
+      const token = await AsyncStorage.getItem('token');
       if(token){
-        navigation.replace('(tabs)')
-
+        navigation.replace('Tabs'); // Se o usuário estiver logado, redireciona para as Tabs
       }
-      setCarregando(false)
+      setCarregando(false); // Para de mostrar a tela de carregamento
     }
-    verificarLogin()
-  },[])
- 
-  async function login() {
-    const resultado = await fazerLogin(email, senha)
-    if(resultado){
-      const {token} = resultado
-      AsyncStorage.setItem('token', token)
-      const tokenDecodificado = jwtDecode(token) as any
-      const pacienteId= tokenDecodificado.id
-      AsyncStorage.setItem('pacienteId', pacienteId)
+    verificarLogin();
+  }, [navigation]);
 
-      navigation.replace('(tabs)')
-    }
-    else{
+  async function login() {
+    const resultado = await fazerLogin(email, senha);
+    if(resultado){
+      const { token } = resultado;
+      AsyncStorage.setItem('token', token);
+      
+      const tokenDecodificado = jwtDecode(token) as any; // Decodifica o token JWT
+      const pacienteId = tokenDecodificado.id;
+      AsyncStorage.setItem('pacienteId', pacienteId);
+
+      navigation.replace('Tabs'); // Redireciona para as Tabs após o login
+    } else {
       toast.show({
         title: "Erro no login",
-        description: "o email ou senha estão incorretos",
+        description: "O email ou senha estão incorretos",
         backgroundColor: "red.500"
-      })
+      });
     }
-    
   }
 
   if(carregando){
-    return null
+    return null; // Tela de carregamento pode ser adicionada aqui
   }
 
   return (
@@ -68,6 +62,7 @@ export default function Login({ navigation }: { navigation: LoginScreenNavigatio
       <Titulo>
         Faça login em sua conta
       </Titulo>
+      
       <Box>
         <EntradaTexto
           label="Email"
@@ -83,6 +78,7 @@ export default function Login({ navigation }: { navigation: LoginScreenNavigatio
           onChangeText={setSenha}
         />
       </Box>
+      
       <Botao onPress={login}>Entrar</Botao>
 
       <Link href='https://www.alura.com.br' mt={2}>

@@ -11,7 +11,7 @@ export default function Perfil({navigation}:any) {
   const [dadosPaciente, setdadosPaciente] = useState({} as Paciente);
 
   useEffect(() => {
-    async function fetchDadosPaciente() {  // Renamed to avoid naming conflict
+    async function fetchDadosPaciente() { 
       const pacienteId = await AsyncStorage.getItem('pacienteId');
       if (!pacienteId) return;
       const resultado = await pegarDadosPaciente(pacienteId);
@@ -21,7 +21,7 @@ export default function Perfil({navigation}:any) {
       }
     }
     fetchDadosPaciente();
-  }, []); // Ensure effect runs once on mount by adding the empty dependency array
+  }, []); 
 
   function deslogar() {
     AsyncStorage.removeItem('token');
@@ -36,8 +36,6 @@ export default function Perfil({navigation}:any) {
       <ScrollView flex={1}>
         <VStack flex={1} alignItems="center" p={5}>
           <Titulo color="blue.500">Meu Perfil</Titulo>
-
-          {/* Avatar with a conditional check for the image */}
           {dadosPaciente.imagem ? (
             <Avatar size="xl" source={{ uri: dadosPaciente.imagem }} mt={5} />
           ) : (
@@ -48,7 +46,6 @@ export default function Perfil({navigation}:any) {
           <Titulo fontSize="lg" mb={1}>{dadosPaciente.nome || "Nome não disponível"}</Titulo>
           <Text>{dadosPaciente.email || "Email não disponível"}</Text>
           
-          {/* Conditional check for the endereco property */}
           {dadosPaciente.endereco ? (
             <Text>{dadosPaciente.endereco.estado || "Rua não disponível"}</Text>
           ) : (

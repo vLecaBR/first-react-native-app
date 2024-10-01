@@ -8,6 +8,7 @@ import Cadastro from "./Cadastro";
 import Login from "./Login";
 import Principal from "../app/(tabs)/Principal"; 
 import Agendamento from "./Agendamento";
+import Tabs from "@/app/(tabs)/Tabs";
 
 export default function Rotas() {
   return (
